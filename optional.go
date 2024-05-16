@@ -14,8 +14,8 @@ type Optional[T any] struct {
 	value *T
 }
 
-func (opt Optional[T]) Get() T {
-	return *opt.value
+func (opt Optional[T]) Get() (T, bool) {
+	return *opt.value, opt.IsPresent()
 }
 
 func (opt Optional[T]) OrElse(other T) T {
