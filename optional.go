@@ -42,8 +42,12 @@ func (opt Optional[T]) IfPresent(consumer func(T)) {
 	}
 }
 
-func Of[T any](value T) Optional[T] {
+func From[T any](value T) Optional[T] {
 	return Optional[T]{value: &value}
+}
+
+func FromPtr[T any](value *T) Optional[T] {
+	return Optional[T]{value: value}
 }
 
 func Empty[T any]() Optional[T] {
